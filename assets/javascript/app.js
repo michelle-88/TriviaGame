@@ -40,3 +40,38 @@ var triviaQuestions = [
       choices: ["Metroville", "Scareville", "Monstropolis", "San Fransokyo"],
       a: 3 }
 ];
+
+var numCorrect = 0;
+var numIncorrect = 0;
+var numUnanswered = 0;
+var userChoice;
+var questionIndex = 0;
+
+// Write function that will show each question based on current questionIndex
+function showQuestion(){
+    $("#question").text(triviaQuestions[questionIndex].q);
+}
+
+// Write function that will show answer choices for the current question
+function showChoices(){
+    for(var i = 0; i < 4; i++){
+        $("#answerChoices").append("<p>" + triviaQuestions[questionIndex].choices[i] + "</p>");
+    }
+}
+
+// Hide question/answers area at start of game
+$("#triviaArea").hide();
+
+// Click listener to hide button/start game when start button is clicked
+$("#startBtn").on("click", function(){
+    $(this).hide();
+    $("#triviaArea").show();
+
+    // Show first question and its answers
+    showQuestion();
+    showChoices();
+
+
+
+    
+});
