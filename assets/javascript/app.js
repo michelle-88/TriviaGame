@@ -68,8 +68,13 @@ function showChoices(){
 
 // Write function for 30 second countdown for each question
 function timerCountdown(){
-    if (timeLeft == 0){
+    if(timeLeft == 0){
         clearInterval(timerInt);
+        $("#question").hide();
+        $("#answerChoices").hide();
+        $("#displayText").html("<h3>Time's Up!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].choices[triviaQuestions[questionIndex].a] + "</p>");
+        numUnanswered++;
+        questionIndex++;
     }
 
     else {
@@ -88,27 +93,16 @@ $("#startBtn").on("click", function(){
     
     $(this).hide();
     $("#triviaArea").show();
-    
 
     // Show first question and its answers
     showQuestion();
     showChoices();
 
-    
     // Click listener for answer choices - store user's answer and compare to correct answer
     $("p").on("click", function(event){
         userChoice = event.target.getAttribute("choice");
         
-        if(timeLeft == 0){
-            $("#question").hide();
-            $("#answerChoices").hide();
-            $("#displayText").html("<h3>Time's Up!</h3>");
-            $("#displayText").html("<h3>Wrong!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].choices[triviaQuestions[questionIndex].a] + "</p>");
-            numUnanswered++;
-            questionIndex++;
-        }
-
-        else if(userChoice == triviaQuestions[questionIndex].a){
+        if(userChoice == triviaQuestions[questionIndex].a){
             $("#question").hide();
             $("#answerChoices").hide();
             $("#displayText").html("<h3>Correct!</h3>")
@@ -116,7 +110,6 @@ $("#startBtn").on("click", function(){
             numCorrect++;
             questionIndex++;
         }
-
 
         else {
             $("#question").hide();
@@ -134,7 +127,7 @@ $("#startBtn").on("click", function(){
 });
 // Write function for 5 second countdown for results page after each question
     // once this countdown finishes, next question will be displayed
-// Write logic to displayed # correct, wrong, unanswered at end of game
+// Write logic to display # correct, wrong, unanswered at end of game
 // Write function to restart game when player clicks 'Start Over' button
 
 });
