@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // Declare global variables
 var triviaQuestions = [
     { q: "What was the name of Mulan's dragon companion?",
@@ -46,9 +48,14 @@ var numIncorrect = 0;
 var numUnanswered = 0;
 var userChoice;
 var questionIndex = 0;
+var timeLeft = 30;
+var timerText = document.querySelector("#timer");
+var timerInt;
+
 
 // Write function that will show each question based on current questionIndex
 function showQuestion(){
+    $("#question").empty();
     $("#question").text(triviaQuestions[questionIndex].q);
 }
 
@@ -59,32 +66,75 @@ function showChoices(){
     }
 }
 
+// Write function for 30 second countdown for each question
+function timerCountdown(){
+    if (timeLeft == 0){
+        clearInterval(timerInt);
+    }
+
+    else {
+        timeLeft--;
+        timerText.textContent = timeLeft;
+    }
+}
+
 // Hide question/answers area at start of game
 $("#triviaArea").hide();
 
 // Click listener to hide button/start game when start button is clicked
 $("#startBtn").on("click", function(){
+    
+    timerInt = setInterval(timerCountdown, 1000);
+    
     $(this).hide();
     $("#triviaArea").show();
+    
 
     // Show first question and its answers
     showQuestion();
     showChoices();
 
+    
     // Click listener for answer choices - store user's answer and compare to correct answer
     $("p").on("click", function(event){
         userChoice = event.target.getAttribute("choice");
-        console.log(userChoice);
-            
-        if(userChoice == triviaQuestions[questionIndex].a){
+        
+        if(timeLeft == 0){
             $("#question").hide();
             $("#answerChoices").hide();
-            $("#displayText").text("Correct!")
+            $("#displayText").html("<h3>Time's Up!</h3>");
+            $("#displayText").html("<h3>Wrong!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].choices[triviaQuestions[questionIndex].a] + "</p>");
+            numUnanswered++;
+            questionIndex++;
         }
-    
-    
+
+        else if(userChoice == triviaQuestions[questionIndex].a){
+            $("#question").hide();
+            $("#answerChoices").hide();
+            $("#displayText").html("<h3>Correct!</h3>")
+            clearInterval(timerInt);
+            numCorrect++;
+            questionIndex++;
+        }
+
+
+        else {
+            $("#question").hide();
+            $("#answerChoices").hide();
+            clearInterval(timerInt);
+            $("#displayText").html("<h3>Wrong!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].choices[triviaQuestions[questionIndex].a] + "</p>");
+            numIncorrect++;
+            questionIndex++;
+        }
+        
+
     });
 
    
 });
+// Write function for 5 second countdown for results page after each question
+    // once this countdown finishes, next question will be displayed
+// Write logic to displayed # correct, wrong, unanswered at end of game
+// Write function to restart game when player clicks 'Start Over' button
 
+});
