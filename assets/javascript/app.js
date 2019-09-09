@@ -2,43 +2,43 @@
 var triviaQuestions = [
     { q: "What was the name of Mulan's dragon companion?",
       choices: ["Pascal", "Toothless", "Mushu", "Puff"],
-      a: 3 },
+      a: 2 },
     
     { q: "What was Ariel's term for a fork in The Little Mermaid?",
       choices: ["Whatchamacallit", "Dinglehopper", "Whosit", "Whatsit"],
-      a: 2 },
+      a: 1 },
 
     { q: "Frollo is the villian in which Disney movie?",
       choices: ["Hercules", "The Lion King", "The Sword in the Stone", "The Hunchback of Notre Dame"],
-      a: 4 },
+      a: 3 },
 
     { q: "What was the name of Jasmine's pet tiger in Aladdin?",
       choices: ["Tony", "Rajah", "Tina", "Abu"],
-      a: 2 },
+      a: 1 },
 
     { q: "Finish this lyric from The Lion King: 'Oh, I just can't wait to be ...'",
       choices: ["free", "famous", "king", "queen"],
-      a: 3 },
+      a: 2 },
 
     { q: "What is the name of Woody and Buzz's owner in Toy Story?",
       choices: ["Andy", "Bob", "Molly", "Fred"],
-      a: 1 },
+      a: 0 },
 
     { q: "In Finding Nemo, which city do Marlin and Dory travel to in order to find Nemo?",
       choices: ["San Diego", "Miami", "Sydney", "Melbourne"],
-      a: 3 },
+      a: 2 },
     
     { q: "What is the name of the megacorporation that manufactured the robot Wall-E?",
       choices: ["Walmart", "Buy-N-Large", "ACME Corp", "Amazon"],
-      a: 2 },
+      a: 1 },
 
     { q: "What is the name of Riley's imaginary friend in the movie Inside Out?",
       choices: ["Bing Bong", "Waldo", "Forky", "Giggles"],
-      a: 1},
+      a: 0},
 
     { q: "What is the name of the city where Mike and Sully live in Monsters Inc?",
       choices: ["Metroville", "Scareville", "Monstropolis", "San Fransokyo"],
-      a: 3 }
+      a: 2 }
 ];
 
 var numCorrect = 0;
@@ -55,7 +55,7 @@ function showQuestion(){
 // Write function that will show answer choices for the current question
 function showChoices(){
     for(var i = 0; i < 4; i++){
-        $("#answerChoices").append("<p>" + triviaQuestions[questionIndex].choices[i] + "</p>");
+        $("#answerChoices").append("<p choice =" + i + ">" + triviaQuestions[questionIndex].choices[i] + "</p>");
     }
 }
 
@@ -71,7 +71,20 @@ $("#startBtn").on("click", function(){
     showQuestion();
     showChoices();
 
-
-
+    // Click listener for answer choices - store user's answer and compare to correct answer
+    $("p").on("click", function(event){
+        userChoice = event.target.getAttribute("choice");
+        console.log(userChoice);
+            
+        if(userChoice == triviaQuestions[questionIndex].a){
+            $("#question").hide();
+            $("#answerChoices").hide();
+            $("#displayText").text("Correct!")
+        }
     
+    
+    });
+
+   
 });
+
