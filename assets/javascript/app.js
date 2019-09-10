@@ -75,7 +75,7 @@ function timerCountdown(){
         $("#displayText").html("<h3>Time's Up!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
         numUnanswered++;
         questionIndex++;
-        setTimeout(loadNextQuestion, 5000);
+        setTimeout(loadNextQuestion, 3000);
     }
 
     else {
@@ -96,7 +96,7 @@ function answerClick(event){
       clearInterval(timerInt);
       numCorrect++;
       questionIndex++;
-      setTimeout(loadNextQuestion, 5000);
+      setTimeout(loadNextQuestion, 3000);
   }
 
   else {
@@ -106,19 +106,30 @@ function answerClick(event){
       $("#displayText").html("<h3>Wrong!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
       numIncorrect++;
       questionIndex++;
-      setTimeout(loadNextQuestion, 5000);
+      setTimeout(loadNextQuestion, 3000);
   }
   
 }
 
 // Write function to show next question, answer choices, and reset timer
 function loadNextQuestion(){
-  $("#displayText").empty();
-  timeLeft = 30;
-  timerText.textContent = timeLeft;
-  showQuestion();
-  showChoices();
-  $("p").on("click", answerClick);
+  // If program reaches end of questions array, the number correct, incorrect, unanswered will be displayed
+  if(questionIndex === triviaQuestions.length){
+    clearInterval(timerInt);
+    $("#displayText").empty(); 
+    $("#displayText").append("<p>Here are your results!</p> <p>Correct Answers: " + numCorrect + "</p> <p>Incorrect Answers: " + numIncorrect + "</p> <p>Unanswered: " + numUnanswered + "</p>");
+    $("#displayText").append("<button id='startOverBtn'>Start Over?</button>");
+  }
+
+  // Otherwise, next question will be displayed
+  else {
+    $("#displayText").empty();
+    timeLeft = 30;
+    timerText.textContent = timeLeft;
+    showQuestion();
+    showChoices();
+    $("p").on("click", answerClick);
+  }
 }
 
 // Hide question/answers area at start of game
@@ -136,10 +147,11 @@ $("#startBtn").on("click", function(){
     // Click listener for answer choices
     $("p").on("click", answerClick);
 
+
   
 });
 
-// Write logic to display # correct, wrong, unanswered at end of game
+
 // Write function to restart game when player clicks 'Start Over' button
 
 });
