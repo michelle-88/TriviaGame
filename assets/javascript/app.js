@@ -119,6 +119,7 @@ function loadNextQuestion(){
     $("#displayText").empty(); 
     $("#displayText").append("<p>Here are your results!</p> <p>Correct Answers: " + numCorrect + "</p> <p>Incorrect Answers: " + numIncorrect + "</p> <p>Unanswered: " + numUnanswered + "</p>");
     $("#displayText").append("<button id='startOverBtn'>Start Over?</button>");
+    $("#startOverBtn").on("click", reset);
   }
 
   // Otherwise, next question will be displayed
@@ -130,6 +131,17 @@ function loadNextQuestion(){
     showChoices();
     $("p").on("click", answerClick);
   }
+}
+
+// Write function to restart game when player clicks 'Start Over' button
+function reset(){
+  numCorrect = 0;
+  numIncorrect = 0;
+  numUnanswered = 0;
+  questionIndex = 0;
+  clearInterval(timerInt);
+  loadNextQuestion();
+
 }
 
 // Hide question/answers area at start of game
@@ -146,12 +158,8 @@ $("#startBtn").on("click", function(){
 
     // Click listener for answer choices
     $("p").on("click", answerClick);
-
-
-  
 });
 
 
-// Write function to restart game when player clicks 'Start Over' button
 
 });
