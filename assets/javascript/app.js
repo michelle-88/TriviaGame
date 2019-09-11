@@ -62,6 +62,7 @@ var timeLeft = 30;
 var timerText = document.querySelector("#timer");
 var timerInt;
 var resultGif;
+var btnOptions = ["btn-primary", "btn-success", "btn-info", "btn-danger"];
 
 
 // Write function that will show each question based on current questionIndex and start countdown
@@ -73,7 +74,10 @@ function showQuestion(){
 // Write function that will show answer choices for the current question
 function showChoices(){
     for(var i = 0; i < 4; i++){
-      $("#answerChoices").append("<button class='btn'>" + triviaQuestions[questionIndex].choices[i] + "</button><br>");
+      var choiceBtn = $("<button class='btn mx-3 btn-lg'>");
+      choiceBtn.addClass(btnOptions[i]);
+      choiceBtn.text(triviaQuestions[questionIndex].choices[i])
+      $("#answerChoices").append(choiceBtn);
     }
 }
 
