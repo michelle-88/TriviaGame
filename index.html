@@ -15,28 +15,29 @@
 <body>
 
 <div class="container">
-    <h1>Disney Movie Trivia</h1>
+
+    <h1 class="display-3 text-center">Disney Movie Trivia</h1>
 
     <!-- Start Button -->
-    <button type="button" class="btn btn-success btn-lg" id="startBtn">Start</button>
+    <button type="button" class="btn btn-success btn-lg btn-block" id="startBtn">Start</button>
 
     <!-- Div surrounding section where questions/answers will be displayed -->
     <div id="triviaArea">
 
         <!-- Div for Timer -->
-        <div>
+        <div class="row justify-content-center">
             <p>Time Remaining: <span id="timer">30</span> Seconds</p>
         </div>
 
         <!-- Divs for results text and gif -->
-        <div id="displayText"></div>
-        <div id="gifArea"></div>
+        <div id="displayText" class="row justify-content-center"></div>
+        <div id="gifArea" class="row justify-content-center"></div>
 
         <!-- Div for Question -->
-        <div id="question"></div>
+        <div id="question" class="row justify-content-center"></div>
 
         <!-- Divs for Answer Choices -->
-        <div id="answerChoices"></div>
+        <div id="answerChoices" class="row justify-content-center"></div>
 
     </div>
 </div>
