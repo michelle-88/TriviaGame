@@ -73,7 +73,7 @@ function showQuestion(){
 // Write function that will show answer choices for the current question
 function showChoices(){
     for(var i = 0; i < 4; i++){
-      $("#answerChoices").append("<p>" + triviaQuestions[questionIndex].choices[i] + "</p>");
+      $("#answerChoices").append("<button class='btn'>" + triviaQuestions[questionIndex].choices[i] + "</button><br>");
     }
 }
 
@@ -148,7 +148,7 @@ function loadNextQuestion(){
     timerText.textContent = timeLeft;
     showQuestion();
     showChoices();
-    $("p").on("click", answerClick);
+    $("button").on("click", answerClick);
   }
 }
 
@@ -175,7 +175,7 @@ $("#startBtn").on("click", function(){
     showChoices();
 
     // Click listener for answer choices
-    $("p").on("click", answerClick);
+    $("button").on("click", answerClick);
 });
 
 });
