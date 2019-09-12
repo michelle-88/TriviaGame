@@ -109,7 +109,7 @@ function answerClick(event){
   if(userChoice == triviaQuestions[questionIndex].a){
       $("#question").empty();
       $("#answerChoices").empty();
-      $("#displayText").html("<h2>Correct!</h2>")
+      $("#displayText").html("<h1>Correct!</h1>")
       clearInterval(timerInt);
       resultGif = $("<img>").attr("src", triviaQuestions[questionIndex].gif);
       $("#gifArea").append(resultGif);
@@ -122,7 +122,7 @@ function answerClick(event){
       $("#question").empty();
       $("#answerChoices").empty();
       clearInterval(timerInt);
-      $("#displayText").append("<h2>Wrong!</h2>");
+      $("#displayText").append("<h1>Wrong!</h1>");
       $("#displayText").append("<p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
       resultGif = $("<img>").attr("src", triviaQuestions[questionIndex].gif);
       $("#gifArea").append(resultGif);
@@ -141,7 +141,7 @@ function loadNextQuestion(){
     $("#displayText").empty(); 
     $("#gifArea").empty(); 
     $("#displayText").append("<p>Here are your results!</p> <p>Correct Answers: " + numCorrect + "</p> <p>Incorrect Answers: " + numIncorrect + "</p> <p>Unanswered: " + numUnanswered + "</p>");
-    $("#displayText").append("<button id='startOverBtn'>Start Over?</button>");
+    $("#displayText").append("<button class='btn btn-primary btn-lg' id='startOverBtn'>Start Over?</button>");
     $("#startOverBtn").on("click", reset);
   }
 
