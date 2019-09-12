@@ -1,0 +1,21 @@
+body{
+    background-image: url(../images/disney-castle.jpeg);
+    background-size: cover;
+}
+
+.container{
+    background: rgb(255, 255, 255, 0.5);;
+    color: black;
+    font-size: 2.5rem;
+}
+
+.display-3 {
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+
+#startBtn{
+    font-size: 2rem;
+    padding-left: 80px;
+    padding-right: 80px;
+}

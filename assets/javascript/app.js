@@ -87,7 +87,7 @@ function timerCountdown(){
         clearInterval(timerInt);
         $("#question").empty();
         $("#answerChoices").empty();
-        $("#displayText").html("<h3>Time's Up!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
+        $("#displayText").html("<h2>Time's Up!</h2> <p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
         resultGif = $("<img>").attr("src", triviaQuestions[questionIndex].gif);
         $("#gifArea").append(resultGif);
         numUnanswered++;
@@ -109,7 +109,7 @@ function answerClick(event){
   if(userChoice == triviaQuestions[questionIndex].a){
       $("#question").empty();
       $("#answerChoices").empty();
-      $("#displayText").html("<h3>Correct!</h3>")
+      $("#displayText").html("<h2>Correct!</h2>")
       clearInterval(timerInt);
       resultGif = $("<img>").attr("src", triviaQuestions[questionIndex].gif);
       $("#gifArea").append(resultGif);
@@ -122,7 +122,8 @@ function answerClick(event){
       $("#question").empty();
       $("#answerChoices").empty();
       clearInterval(timerInt);
-      $("#displayText").html("<h3>Wrong!</h3> <p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
+      $("#displayText").append("<h2>Wrong!</h2>");
+      $("#displayText").append("<p>The Correct Answer was: " + triviaQuestions[questionIndex].a + "</p>");
       resultGif = $("<img>").attr("src", triviaQuestions[questionIndex].gif);
       $("#gifArea").append(resultGif);
       numIncorrect++;

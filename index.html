@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trivia Game</title>
+    <title>Disney Trivia Game</title>
 
     <!-- Link to jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Link to Bootstrap CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-ciphE0NCAlD2/N6NUApXAN2dAs/vcSAOTzyE202jJx3oS8n4tAQezRgnlHqcJ59C" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Lobster|Modak|Pacifico|Sacramento&display=swap" rel="stylesheet">
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+        <h1 class="display-3 text-center pt-3">Disney Movie Trivia</h1>
+    
+        <div class="text-center">
+            <!-- Start Button -->
+            <button type="button" class="btn btn-success btn-lg mt-5" id="startBtn">Start</button>
+        </div>
 
-<div class="container">
-
-    <h1 class="display-3 text-center">Disney Movie Trivia</h1>
-
-    <!-- Start Button -->
-    <button type="button" class="btn btn-success btn-lg btn-block" id="startBtn">Start</button>
-
+    <div class="container my-4">
     <!-- Div surrounding section where questions/answers will be displayed -->
     <div id="triviaArea">
 
@@ -40,7 +44,7 @@
         <div id="answerChoices" class="row justify-content-center"></div>
 
     </div>
-</div>
+    </div>
 
 <!-- Link to external javascript file -->    
 <script src="./assets/javascript/app.js"></script>
